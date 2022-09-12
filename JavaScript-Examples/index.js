@@ -1,41 +1,17 @@
-// CREATE A CONSTRUCTOR
+// Inheritance
 
-// Constructor Function
-function Members(name, age) {
-  this.name = name;
-  this.age = age;
-}
-
-const Quan = new Members("Quan", "23");
-const An = new Members("An", "25");
-
-Quan.lastName = "Nguyen";
-
-console.log(Quan, An);
-
-// Class
-class Books {
-  constructor(name, author) {
-    this.name = name;
-    this.author = author;
-  }
-
-  getName() {
-    return this.name;
-  }
-  
-  getAuthor() {
-    return this.author;
-  }
-
-  static getFullInfo() {
-    return "Bonjour";
+class Greet {
+  sayHi() {
+    return "How are you?";
   }
 }
 
-const theRichDad = new Books("Quan", "An"); // define an instance object
+class Answer extends Greet {
+  sayHi() {
+    return super.sayHi() + " I'm fine, thank you!"
+  }
+}
 
-console.log(theRichDad.getName());
-console.log(theRichDad.getAuthor());
+const howToAnswer = new Answer();
 
-console.log(Books.getFullInfo()); // very useful, at times
+console.log(howToAnswer.sayHi());
