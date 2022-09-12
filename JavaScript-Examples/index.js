@@ -1,32 +1,41 @@
-const car = {
-  brand: "Ford",
-  model: "Fiesta",
-  start: function () {
-    console.log(`Started
-  ${this.brand} ${this.model}`);
-  },
-};
-car.start();
-delete car.model;
-console.log(car.model);
+// CREATE A CONSTRUCTOR
 
-// we don't have access to `this` if we use an arrow function
-const car2 = {
-  brand: "Ford",
-  model: "Fiesta",
-  start: () => {
-    console.log(`Started
-  ${this.brand} ${this.model}`);
-  },
-};
-car2.start();
+// Constructor Function
+function Members(name, age) {
+  this.name = name;
+  this.age = age;
+}
 
-// Methods can accept parameters, like regular functions
-const car3 = {
-  brand: "Ford",
-  model: "Fiesta",
-  goTo: function (destination) {
-    console.log(`Going to ${destination}`);
-  },
-};
-car3.goTo("Rome");
+const Quan = new Members("Quan", "23");
+const An = new Members("An", "25");
+
+Quan.lastName = "Nguyen";
+
+console.log(Quan, An);
+
+// Class
+class Books {
+  constructor(name, author) {
+    this.name = name;
+    this.author = author;
+  }
+
+  getName() {
+    return this.name;
+  }
+  
+  getAuthor() {
+    return this.author;
+  }
+
+  static getFullInfo() {
+    return "Bonjour";
+  }
+}
+
+const theRichDad = new Books("Quan", "An"); // define an instance object
+
+console.log(theRichDad.getName());
+console.log(theRichDad.getAuthor());
+
+console.log(Books.getFullInfo()); // very useful, at times
