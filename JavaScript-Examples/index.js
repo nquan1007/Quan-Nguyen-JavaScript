@@ -1,32 +1,61 @@
-// What is callback hell?
+// Promise examples
+// Get user and comment in a website
 
-setTimeout(function () {
-  console.log(1);
-  setTimeout(function () {
-    console.log(2);
-    setTimeout(function () {
-      console.log(3);
-      setTimeout(function () {
-        console.log(4);
-      }, 1000);
-    }, 1000);
-  }, 1000);
-}, 1000);
+var users = [
+  {
+    id: 1,
+    userName: "Quan Nguyen",
+  },
+  {
+    id: 2,
+    userName: "An Nguyen",
+  },
+  {
+    id: 3,
+    userName: "Vu Nguyen",
+  },
+];
 
-// Promises
-var promise = new Promise((resolve, reject) => {
-  // (resolve, reject) -> executor
-  resolve();
-  reject();
-});
+var comments = [
+  {
+    userId: 1,
+    content: "Hello baby",
+  },
+  {
+    userId: 2,
+    content: "Bai bai guys",
+  },
+];
 
-promise
-  .then(() => {
-    console.log("Sucessful");
-  })
-  .catch(() => {
-    console.log("Failed");
-  })
-  .finally(() => {
-    console.log("Done");
+// 1. Get the comments
+// 2. Take the userId
+// 3. From the userId -> get the corresponding id
+
+function getComments() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(comments);
+    }, 500);
   });
+}
+
+function getUsersByIds(userIds) {
+  return new Promise((resolve) => {
+    var usersByIds = users.filter((user) => {
+      return userIds.includes(user.id);
+    });
+    resolve(usersByIds);
+  });
+}
+
+getComments()
+  .then((comments) => {
+    var userIds = comments.map((comment) => {
+      return comment.userId; // get the userId from comments and return them as an array named userId
+    });
+    getUsersByIds(userIds)
+      .then((x) => {
+        console.log(x);
+      })
+  });
+
