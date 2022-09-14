@@ -1,61 +1,18 @@
-// Promise examples
-// Get user and comment in a website
+// List out the items in an array
 
-var users = [
-  {
-    id: 1,
-    userName: "Quan Nguyen",
-  },
-  {
-    id: 2,
-    userName: "An Nguyen",
-  },
-  {
-    id: 3,
-    userName: "Vu Nguyen",
-  },
-];
+const array = ['Cuoc', 'doi', 'sao', 'kho', 'khan', 'den', 'the'];
 
-var comments = [
-  {
-    userId: 1,
-    content: "Hello baby",
-  },
-  {
-    userId: 2,
-    content: "Bai bai guys",
-  },
-];
-
-// 1. Get the comments
-// 2. Take the userId
-// 3. From the userId -> get the corresponding id
-
-function getComments() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(comments);
-    }, 500);
-  });
+for (let i = 0; i < array.length; i++) {
+  const element = array[i];
+  console.log(element); 
 }
 
-function getUsersByIds(userIds) {
-  return new Promise((resolve) => {
-    var usersByIds = users.filter((user) => {
-      return userIds.includes(user.id);
-    });
-    resolve(usersByIds);
-  });
+for (let element of array) { // slower than the others
+  console.log(element);
 }
 
-getComments()
-  .then((comments) => {
-    var userIds = comments.map((comment) => {
-      return comment.userId; // get the userId from comments and return them as an array named userId
-    });
-    getUsersByIds(userIds)
-      .then((x) => {
-        console.log(x);
-      })
-  });
-
+console.time('forEach'); // fastest wa
+array.forEach(element => {
+  console.log(element);
+})
+console.timeEnd('forEach');
