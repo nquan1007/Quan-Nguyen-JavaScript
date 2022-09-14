@@ -1,13 +1,34 @@
-// map, filter, reduce
+// destructuring in js
 
-const numberArray = [1, 2, 3, 4, 5, 6, 7];
+const quan = {
+  ten: 'Quan Nguyen',
+  tuoi: 23,
+  diachi: 'Dong Ha'
+}
 
-const mapArray = numberArray.map(number => number*3);
-console.log(mapArray);
+function printData(person) {  // printData({ten, tuoi, diachi})
+  const {ten, tuoi, diachi} = person;
+  console.log(ten);
+  console.log(tuoi);
+  console.log(diachi);
+}
 
-const filterArray = mapArray.filter(number => number % 2 != 0);
-console.log(filterArray);
+printData(quan)
 
-const sum = filterArray.reduce((sum, number) => sum += number, 0);
-console.log(sum);
+// copy an object by values and change the value of the property in new object using Object function
+const an = {};
+Object.assign(an, quan, {ten: 'An Nguyen', diachi: 'Vinh Linh'});
+
+console.log(an)
+
+printData(an)
+
+// use destructuring to copy an object
+const tuan = {
+  ...quan,
+  ten: 'Tuan Hoang',
+  diachi: 'phuong 2'
+}
+
+printData(tuan)
 
