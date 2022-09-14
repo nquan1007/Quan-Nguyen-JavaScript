@@ -1,18 +1,13 @@
-// List out the items in an array
+// map, filter, reduce
 
-const array = ['Cuoc', 'doi', 'sao', 'kho', 'khan', 'den', 'the'];
+const numberArray = [1, 2, 3, 4, 5, 6, 7];
 
-for (let i = 0; i < array.length; i++) {
-  const element = array[i];
-  console.log(element); 
-}
+const mapArray = numberArray.map(number => number*3);
+console.log(mapArray);
 
-for (let element of array) { // slower than the others
-  console.log(element);
-}
+const filterArray = mapArray.filter(number => number % 2 != 0);
+console.log(filterArray);
 
-console.time('forEach'); // fastest wa
-array.forEach(element => {
-  console.log(element);
-})
-console.timeEnd('forEach');
+const sum = filterArray.reduce((sum, number) => sum += number, 0);
+console.log(sum);
+
