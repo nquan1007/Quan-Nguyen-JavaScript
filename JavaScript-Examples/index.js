@@ -1,27 +1,27 @@
-// JSON syntax
+// How to call API to get data from Backend using fetch to receive JS type
 
-const jsonNumber = '1';
+var postApi = "https://jsonplaceholder.typicode.com/posts";
 
-const jsonBoolean = 'true';
+fetch(postApi)
+  .then((response) => {
+    // return a promise
+    return response.json(); // JSON.parse -> receive JS type
+  })
+  .then((posts) => {
+    var htmls = posts.map((post) => {
+      // use map to list out titles and bodies of element in the API
+      return `<li>
+          <h2>${post.title}</h2>
+          <p>${post.body}</p>
+        </li>`;
+    });
 
-const jsonNull = 'null';
+    var htmlItems = htmls.join(""); // join the items in the returned array above by a space
 
-const jsonString = '"Quan"'
-
-const jsonArray = '["JavaScript","PHP"]';
-
-const jsonObject = '{"name":"Quan Nguyen","age":"23"}';
-
-console.log(JSON.parse(jsonNumber));
-console.log(typeof JSON.parse(jsonNumber));
-
-var object = JSON.parse(jsonObject);
-console.log(object);
-
-var An = {
-  ...object,
-  name: "An Nguyen"
-}
-console.log(An);
-
-console.log(JSON.stringify(1));
+    var htmlCode = document.getElementById("content-block");
+    htmlCode.innerHTML = htmlItems;
+    console.log(htmlCode)
+  })
+  .catch((error) => {
+    alert("ERROR!!!");
+  });
