@@ -1,34 +1,13 @@
-// destructuring in js
+// The order of execution of Call Stack
 
-const quan = {
-  ten: 'Quan Nguyen',
-  tuoi: 23,
-  diachi: 'Dong Ha'
-}
+console.log('Step 1');
 
-function printData(person) {  // printData({ten, tuoi, diachi})
-  const {ten, tuoi, diachi} = person;
-  console.log(ten);
-  console.log(tuoi);
-  console.log(diachi);
-}
+setTimeout(() => { // micro tasks
+  console.log('setTimeOut');
+})
 
-printData(quan)
+Promise.resolve().then(() => { // macro tasks
+  console.log('Promise');
+})
 
-// copy an object by values and change the value of the property in new object using Object function
-const an = {};
-Object.assign(an, quan, {ten: 'An Nguyen', diachi: 'Vinh Linh'});
-
-console.log(an)
-
-printData(an)
-
-// use destructuring to copy an object
-const tuan = {
-  ...quan,
-  ten: 'Tuan Hoang',
-  diachi: 'phuong 2'
-}
-
-printData(tuan)
-
+console.log('Step 2')
