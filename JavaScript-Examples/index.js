@@ -1,13 +1,11 @@
-// The order of execution of Call Stack
+// JSON syntax
 
-console.log('Step 1');
+const jsonNumber = '1';
 
-setTimeout(() => { // micro tasks
-  console.log('setTimeOut');
-})
+const jsonBoolean = 'true';
 
-Promise.resolve().then(() => { // macro tasks
-  console.log('Promise');
-})
+const jsonNull = 'null';
 
-console.log('Step 2')
+const jsonArray = '["JavaScript","PHP"]';
+
+const jsonObject = '{"name":"Quan Nguyen","age":"23"}';
