@@ -1,27 +1,51 @@
-// How to call API to get data from Backend using fetch to receive JS type
+// Async Await syntax
+const getQuan = async() => {
+  return "Quan"
+}
 
-var postApi = "https://jsonplaceholder.typicode.com/posts";
-
-fetch(postApi)
-  .then((response) => {
-    // return a promise
-    return response.json(); // JSON.parse -> receive JS type
-  })
-  .then((posts) => {
-    var htmls = posts.map((post) => {
-      // use map to list out titles and bodies of element in the API
-      return `<li>
-          <h2>${post.title}</h2>
-          <p>${post.body}</p>
-        </li>`;
+getQuan()
+  .then(str => {
+      console.log(str);
     });
+  
+  (async() => {
+      console.log(await getQuan())
+})()
 
-    var htmlItems = htmls.join(""); // join the items in the returned array above by a space
 
-    var htmlCode = document.getElementById("content-block");
-    htmlCode.innerHTML = htmlItems;
-    console.log(htmlCode)
+
+const getName = (name) => {
+  return name;
+};
+
+// Async Await style
+
+const persons = async () => {
+  const personA = await getName("a");
+  const personB = await getName("b");
+  const personC = await getName("c");
+  return [personA, personB, personC];
+};
+
+persons().then(arr => {
+  console.log(arr);
+});
+
+// Promise style 
+const personsPromise = () => {
+  const array = [];
+  getName("Quan").then(a => {
+    array.push(a);
+    getName("An").then(b => {
+      array.push(b);
+      getName("Tuan").then(c => {
+        array.push(c);
+      })
+    })
   })
-  .catch((error) => {
-    alert("ERROR!!!");
-  });
+  return array;
+}
+
+personsPromise().then(array => {
+  console.log(array);
+})
