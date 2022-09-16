@@ -1,18 +1,9 @@
-// ES6 let, const 
-for (let i = 0; i < 10; i++) { // i : block scope
-  console.log(i);
-}
-
-console.log(i); // not defined
-
-const array = ['Di hoc', 'Di lam']; // can not reassigned
+// ES6 Template Literals 
+const age = 23;
+console.log(`Nam nay toi ${age} tuoi
+Toi ten la Quan`);
 
 // ES5
 var firstName = 'Quan';
-
-function getName() {
-  var lastName = 'Nguyen'; // functional scope
-  return firstName + ' ' + lastName;
-}
-
-console.log(getName())
+var fullName = 'Toi ten la ' + firstName + "\n" + "Nam nay toi 23 tuoi";
+console.log(fullName);
