@@ -1,51 +1,18 @@
-// Async Await syntax
-const getQuan = async() => {
-  return "Quan"
+// ES6 let, const 
+for (let i = 0; i < 10; i++) { // i : block scope
+  console.log(i);
 }
 
-getQuan()
-  .then(str => {
-      console.log(str);
-    });
-  
-  (async() => {
-      console.log(await getQuan())
-})()
+console.log(i); // not defined
 
+const array = ['Di hoc', 'Di lam']; // can not reassigned
 
+// ES5
+var firstName = 'Quan';
 
-const getName = (name) => {
-  return name;
-};
-
-// Async Await style
-
-const persons = async () => {
-  const personA = await getName("a");
-  const personB = await getName("b");
-  const personC = await getName("c");
-  return [personA, personB, personC];
-};
-
-persons().then(arr => {
-  console.log(arr);
-});
-
-// Promise style 
-const personsPromise = () => {
-  const array = [];
-  getName("Quan").then(a => {
-    array.push(a);
-    getName("An").then(b => {
-      array.push(b);
-      getName("Tuan").then(c => {
-        array.push(c);
-      })
-    })
-  })
-  return array;
+function getName() {
+  var lastName = 'Nguyen'; // functional scope
+  return firstName + ' ' + lastName;
 }
 
-personsPromise().then(array => {
-  console.log(array);
-})
+console.log(getName())
