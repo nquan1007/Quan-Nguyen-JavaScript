@@ -5,40 +5,44 @@
     <title>About Me</title>
   </head>
 
-  <style>
-    .listItem {
-      color: red;
-    }
-  </style>
-
   <body>
-    <h1>About Me</h1>
-
-    <ul>
-      <li>Nickname: <span id="nickname"></span></li>
-      <li>Favorites: <span id="favorites"></span></li>
-      <li>Hometown: <span id="hometown"></span></li>
-    </ul>
+    <h1>My Book List</h1>
   </body>
 
   <script>
-    document.body.style.fontFamily = "Arial, sans-serif";
+    var books = [
+      {
+        title: "The Design of Everyday Things",
+        author: "Don Norman",
+        alreadyRead: false,
+        coverImage: 'https://gamek.mediacdn.vn/133514250583805952/2022/4/13/photo-1-1649831884596886878107.jpg'
+      },
+      {
+        title: "The Most Human Human",
+        author: "Brian Christian",
+        alreadyRead: true,
+        coverImage: 'https://gamek.mediacdn.vn/133514250583805952/2022/4/13/photo-1-1649831884596886878107.jpg'
+      },
+    ];
+    
+    var bookList = document.createElement('ul');
+    for (let i = 0; i < books.length; i++) {
+      var bookItem = document.createElement('li');
+      var bookCover = document.createElement('img');
+      bookCover.src = books[i].coverImage;
+      bookCover.style.width = '300px';
+      bookItem.appendChild(bookCover);
 
-    document.getElementById("nickname").innerHTML = "Quan Nguyen";
-    document.getElementById("favorites").innerHTML = "Music";
-    document.getElementById("hometown").innerHTML = "Dong Ha Boy";
+      var bookInformation = document.createTextNode(`${books[i].title} written by ${books[i].author}`);
+      bookItem.appendChild(bookInformation);
 
-    const items = document.getElementsByTagName("li");
-    // return a list like array, can be accessed by index
-    for (let i = 0; i < items.length; i++) {
-      items[i].className = "listItem";
+      if(books[i].alreadyRead) {
+        bookItem.style.textDecoration = 'line-through';
+      }
+
+      bookList.appendChild(bookItem);
     }
 
-    const newImg = document.createElement("img");
-    newImg.setAttribute(
-      "src",
-      "https://media.istockphoto.com/photos/slave-hands-broken-chains-with-bird-flying-picture-id1296601764?b=1&k=20&m=1296601764&s=170667a&w=0&h=0hjKKZZYp2Wl1BRxopegdWrJwTwi1Vlbs_aXdmhhr_o="
-    );
-    document.body.appendChild(newImg);
+    document.body.appendChild(bookList);
   </script>
 </html>
