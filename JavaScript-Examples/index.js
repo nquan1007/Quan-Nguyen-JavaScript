@@ -1,46 +1,26 @@
-// ES6: Enhanced Object Property
-// 1. Property Shorthand
-// 2. Method Property
-
-function person(name, age) {
-  return {
-    name,
-    age,
-    getName() {
-      return this.name + " " + this.age;
-    },
-  };
+// ES6: Extended Parameter Handling 
+  // Default Parameter & Rest Parameter
+function getNameES6(name = 'Quan', age = 23, ...rest) {
+  console.log(name + ' ' + age);
+  console.log('rest', rest)
 }
-console.log(person("Quan", 100));
 
-// ES5
-function person1(name, age) {
-  return {
-    name: name,
-    age: age,
-    getName: function () {
-      return this.name + " " + this.age;
-    },
-  };
+getNameES6('An', 30, 'Doctor', 10000);
+  
+  // Spread Operator
+const Quan = ['Quan Nguyen', 23];
+const An = ['An Nguyen', 24, ...Quan];
+console.log(An);
+
+const Tuan = {
+  name: 'Tuan Hoang', 
+  age: 23
 }
-console.log(person1("An", 120));
-
-// 3. Computed Property
-var salary = "Salary";
-
-// ES6
-var person2 = {
-  name: "An",
-  age: 50,
-  [`${salary}OfAn`]: 6000,
+const Vu = {
+  job: 'Bartender', 
+  school: 'DTU',
+  ...Tuan,
 }
-console.log(person2);
+console.log(Vu);
 
 
-// ES5
-var person3 = {
-  name: "Quan",
-  age: 100,
-};
-person3[salary + "OfQuan"] = 10000000000;
-console.log(person3);
