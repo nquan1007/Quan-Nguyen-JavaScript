@@ -1,26 +1,43 @@
-// ES6: Extended Parameter Handling 
-  // Default Parameter & Rest Parameter
-function getNameES6(name = 'Quan', age = 23, ...rest) {
-  console.log(name + ' ' + age);
-  console.log('rest', rest)
+// ES6: Class 
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  getJob() {
+    console.log(`My job is ${this.job}`);
+  }
 }
 
-getNameES6('An', 30, 'Doctor', 10000);
-  
-  // Spread Operator
-const Quan = ['Quan Nguyen', 23];
-const An = ['An Nguyen', 24, ...Quan];
-console.log(An);
-
-const Tuan = {
-  name: 'Tuan Hoang', 
-  age: 23
+class Engineer extends Person {
+  constructor(name, age, job) {
+    super(name, age);
+    this.job = job;
+  }
 }
-const Vu = {
-  job: 'Bartender', 
-  school: 'DTU',
-  ...Tuan,
-}
-console.log(Vu);
 
+var Quan = new Engineer('Quan Nguyen', 23, 'Web Developer');
+console.log(Quan);
+Quan.getJob();
+
+// ES5
+  // Constructor
+// function Person(name, age) {
+//   this.name = name;
+//   this.age = age;
+
+//   console.log(this);
+// } 
+
+// var Quan = new Person('Quan Nguyen', 23);
+
+//   // Prototype
+// Person.prototype.getJob = function() {
+//   return 'I'm doing about ' + this.job;
+// }
+
+// var An = new Person('An', 29);
+// An.job = 'Tester';
+// console.log(An.getJob());
 
