@@ -6,43 +6,11 @@
   </head>
 
   <body>
-    <h1>My Book List</h1>
+    <h1>Test without Debouncing</h1>
+    <input type="text" id="inputBox" style="width: 300px; height: 30px; font-size: 20px">
+    <p id="paragraph" style="font-size: 25px">API is called 0 times</p>
+    <button id="resetbtn" style="font-size: 25px">Reset</button>
   </body>
 
-  <script>
-    var books = [
-      {
-        title: "The Design of Everyday Things",
-        author: "Don Norman",
-        alreadyRead: false,
-        coverImage: 'https://gamek.mediacdn.vn/133514250583805952/2022/4/13/photo-1-1649831884596886878107.jpg'
-      },
-      {
-        title: "The Most Human Human",
-        author: "Brian Christian",
-        alreadyRead: true,
-        coverImage: 'https://gamek.mediacdn.vn/133514250583805952/2022/4/13/photo-1-1649831884596886878107.jpg'
-      },
-    ];
-    
-    var bookList = document.createElement('ul');
-    for (let i = 0; i < books.length; i++) {
-      var bookItem = document.createElement('li');
-      var bookCover = document.createElement('img');
-      bookCover.src = books[i].coverImage;
-      bookCover.style.width = '300px';
-      bookItem.appendChild(bookCover);
-
-      var bookInformation = document.createTextNode(`${books[i].title} written by ${books[i].author}`);
-      bookItem.appendChild(bookInformation);
-
-      if(books[i].alreadyRead) {
-        bookItem.style.textDecoration = 'line-through';
-      }
-
-      bookList.appendChild(bookItem);
-    }
-
-    document.body.appendChild(bookList);
-  </script>
+  <script src="index.js"></script>
 </html>
