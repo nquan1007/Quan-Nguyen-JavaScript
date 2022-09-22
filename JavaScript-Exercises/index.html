@@ -2,28 +2,26 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Return first and last name from a form - w3resource</title>
+    <title>Set the background color</title>
   </head>
 
   <body>
-    <form id="form1" onsubmit="getFormvalue()">
-      First name: <input type="text" name="fname" value="David" /><br />
-      Last name: <input type="text" name="lname" value="Beckham" /><br />
-      <input type="submit" value="Submit" />
-    </form>
+    <input
+      type="button"
+      value="Click to set paragraph background color"
+      onclick="setBackground()"
+    />
+    <p>Quan Nguyen 123</p>
+    <p>An Nguyen 123</p>
   </body>
 
   <script>
-    const getFormvalue = () => {
-      let form = document.getElementById("form1");
-      let values = [];
-      for (let i = 0; i < form.length; i++) {
-        if (form.elements[i].value !== 'Submit') {
-          values.push(form.elements[i].value);
-        }
-      }
-      return values;
+    const setBackground = () => {
+      let paralist = document.getElementsByTagName('p');
+      let p1 = paralist[0];
+      p1.style.background = "violet";
+      let p2 = paralist[1];
+      p2.style.background = "yellow";
     }
-    console.log(getFormvalue());
   </script>
 </html>
