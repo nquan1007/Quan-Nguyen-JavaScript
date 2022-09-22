@@ -2,26 +2,30 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Set the background color</title>
   </head>
-
   <body>
-    <input
-      type="button"
-      value="Click to set paragraph background color"
-      onclick="setBackground()"
-    />
-    <p>Quan Nguyen 123</p>
-    <p>An Nguyen 123</p>
+    <p>
+      <a
+        id="w3r"
+        type="text/html"
+        hreflang="en-us"
+        rel="nofollow"
+        target="_self"
+        href="https://www.w3resource.com/"
+        >Hello bro</a
+      >
+    </p>
+    <button onclick="getAttributes()">
+      Click here to get attributes value
+    </button>
+    <p id="data"></p>
   </body>
 
   <script>
-    const setBackground = () => {
-      let paralist = document.getElementsByTagName('p');
-      let p1 = paralist[0];
-      p1.style.background = "violet";
-      let p2 = paralist[1];
-      p2.style.background = "yellow";
+    const getAttributes = () => {
+      const data = document.getElementById('data');
+      const attributeNames = document.getElementById('w3r').getAttributeNames();
+      data.innerHTML = attributeNames.join(', ');;
     }
   </script>
 </html>
