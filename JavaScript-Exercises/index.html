@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Insert row in a table - w3resource</title>
+    <title>Change the content of a cell</title>
   </head>
   <body>
-    <table id="sampleTable" border="1">
+    <table id="myTable" border="1">
       <tr>
         <td>Row1 cell1</td>
         <td>Row1 cell2</td>
@@ -14,19 +14,25 @@
         <td>Row2 cell1</td>
         <td>Row2 cell2</td>
       </tr>
+      <tr>
+        <td>Row3 cell1</td>
+        <td>Row3 cell2</td>
+      </tr>
     </table>
-    <br />
-    <input type="button" onclick="insert_Row()" value="Insert row" />
+    <form>
+      <input type="button" onclick="changeContent()" value="Change content" />
+    </form>
   </body>
 
   <script>
-    const insert_Row = () => {
-      const table = document.getElementById("sampleTable");
-      const newRow = table.insertRow(2);
-      const cell1 = newRow.insertCell(0);
-      const cell2 = newRow.insertCell(1);
-      cell1.innerHTML = 'Cell1';
-      cell2.innerHTML = 'Cell2';
-    };
+    function changeContent() {
+      rowNumber = window.prompt("Input the Row number(0,1,2)", "0"); // string
+      columnNumber = window.prompt("Input the Column number(0,1)", "0"); // string
+      content = window.prompt("Input the Cell content"); // string
+      var table = document.getElementById("myTable");
+      var row = table.rows[parseInt(rowNumber, 10)].cells; // pick out 2 cells of the row as a HTMLCollection
+      console.log(row)
+      row[parseInt(columnNumber, 10)].innerHTML = content;
+    }
   </script>
 </html>
